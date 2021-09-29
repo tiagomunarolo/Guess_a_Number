@@ -10,7 +10,7 @@ export default (StartResetBox = (props) => {
 				onPress={() => {
 					props.setNumber(true);
 					props.adjustNumber(props.number);
-					console.log('Starting Game! Let\'s guess: ', props.number);
+					console.log("Starting Game! Let's guess: ", props.number);
 				}}
 			/>
 		</View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 
-const StartResetButton = (props) => {
+const LowerHigherBtn = (props) => {
 	const numberInput = props.numberInput;
 	const lowerHandler = props.lowerHandler;
 	const higherHandler = props.higherHandler;
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default StartResetButton;
+export default LowerHigherBtn;
