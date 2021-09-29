@@ -1,7 +1,14 @@
-import {Alert } from 'react-native';
+import { Alert } from 'react-native';
+
+function getRandomIntInclusive(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, updateNumber, setNumber) => {
-	const newNumber = Math.floor(Math.ceil(Math.random() * (max - min)) + min);
+	const newNumber = getRandomIntInclusive(min, max);
+
 	let liar = false;
 
 	if (ignore && newNumber == ignore) {
@@ -11,13 +18,13 @@ export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, upd
 	if ((current > choosenNumber && type === 'higher') || (current < choosenNumber && type === 'lower')) {
 		liar = true;
 		Alert.alert('Liar detected', `Please, play the game against the rules!!`);
-        return;
+		return;
 	}
 
 	if (!liar && newNumber == choosenNumber) {
 		Alert.alert('Game Over', `Number found ${choosenNumber}`);
 		setNumber(false);
-        return;
+		return;
 	}
 
 	if (
