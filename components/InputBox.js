@@ -15,8 +15,9 @@ export default function InputBox(props) {
 	const unSetNumber = () => {
 		updateNumber('');
 	};
-	const input = () => {
-		return (
+
+	return (
+		<Card cardBox={styles.cardBox}>
 			<View style={styles.inputBox}>
 				<TextInput
 					autoFocus={true}
@@ -27,21 +28,14 @@ export default function InputBox(props) {
 					textAlign="center"
 				/>
 			</View>
-		);
-	};
-
-	const button = () => {
-		return (
 			<StartResetBox
 				setNumber={props.setNumber}
 				adjustNumber={props.adjustNumber}
 				unSetNumber={unSetNumber}
 				number={number}
 			/>
-		);
-	};
-
-	return <Card cardBox={styles.cardBox} input={input} button={button} />;
+		</Card>
+	);
 }
 
 const styles = StyleSheet.create({

@@ -6,8 +6,7 @@ export default function Card(props) {
 		<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 			<View style={styles.cardContainer}>
 				<View style={{ ...styles.cardBox, ...props.cardBox }}>
-					{<props.input />}
-					{<props.button />}
+					{props.children}
 				</View>
 			</View>
 		</TouchableWithoutFeedback>
