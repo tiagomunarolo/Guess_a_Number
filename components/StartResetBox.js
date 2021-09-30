@@ -10,7 +10,7 @@ export default (StartResetBox = (props) => {
 			<Button
 				title="Start"
 				onPress={() => {
-					propsOverride.setNumber(constants.GAME_SCREEN);
+					propsOverride.updateScreen(constants.GAME_SCREEN);
 					propsOverride.adjustNumber(propsOverride.number);
 					console.log("Starting Game! Let's guess: ", propsOverride.number);
 				}}

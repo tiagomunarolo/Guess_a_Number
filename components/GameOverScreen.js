@@ -15,7 +15,7 @@ export default (GameOverScreen = (props) => {
 				</Text>
 			</View>
 			<View style={styles.button}>
-				<Button title="NEW GAME" color="white" onPress={() => props.setNumber(constants.INPUT_SCREEN)} />
+				<Button title="NEW GAME" color="white" onPress={() => props.updateScreen(constants.INPUT_SCREEN)} />
 			</View>
 		</View>
 	);

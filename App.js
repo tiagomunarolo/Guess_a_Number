@@ -8,19 +8,19 @@ import GameOverScreen from './components/GameOverScreen';
 import constants from './constants';
 
 export default function App() {
-	const [ numberSet, numberSetMethod ] = useState(constants.INPUT_SCREEN);
+	const [ screenSelected, updateScreen ] = useState(constants.INPUT_SCREEN);
 	const [ numRounds, setNumRounds ] = useState(0);
 	const [ numberValue, adjustNumberValue ] = useState(-1);
 
 	let Component = InputBox;
-	if (!numberSet) Component = GameBox;
-	if (numberSet === 1) Component = GameOverScreen;
+	if (!screenSelected) Component = GameBox;
+	if (screenSelected === 1) Component = GameOverScreen;
 
 	return (
 		<View style={styles.container}>
 			<Header title="Guess a Number" />
 			<Component
-				setNumber={numberSetMethod}
+				updateScreen={updateScreen}
 				adjustNumber={adjustNumberValue}
 				number={numberValue}
 				rounds={numRounds}

@@ -7,7 +7,6 @@ import { tryNewNumber } from './RandomGenerator';
 
 export default function GameBox(props) {
 	const choosenNumber = props.number;
-	const setNumber = props.setNumber;
 	const setNumRounds = props.setNumRounds;
 	const [ minNumber, updateMinNumber ] = useState(1);
 	const [ maxNumber, updateMaxNumber ] = useState(99);
@@ -22,7 +21,7 @@ export default function GameBox(props) {
 		current: numberInput,
 		choosenNumber: choosenNumber,
 		updateNum: updateNumber,
-		setNumber: setNumber,
+		updateScreen: props.updateScreen,
 		setRounds: setNumRounds
 	};
 

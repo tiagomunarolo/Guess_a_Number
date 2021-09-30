@@ -26,7 +26,7 @@ export const tryNewNumber = (data) => {
 
 	if (!liar && newNumber == data.choosenNumber) {
 		Alert.alert('Game Over', `Number found ${data.choosenNumber}`);
-		data.setNumber(constants.GAME_OVER_SCREEN);
+		data.updateScreen(constants.GAME_OVER_SCREEN);
 		data.setRounds(data.ignore.length);
 		return;
 	}
