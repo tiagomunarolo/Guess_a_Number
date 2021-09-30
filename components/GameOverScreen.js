@@ -42,23 +42,23 @@ const styles = StyleSheet.create({
 	},
 	textContainer: {
 		padding: 30,
-        textAlign: "center",
+		textAlign: 'center'
 	},
 	button: {
 		borderRadius: 20,
 		borderWidth: 2,
-        borderColor: "pink",
+		borderColor: 'pink',
 		backgroundColor: '#ff66ff',
-        fontWeight: "900",
-        shadowOpacity: 0.2
+		fontWeight: '900',
+		shadowOpacity: 0.2
 	},
-    base: {
-        padding: 20,
-        fontSize: 25,
-    },
-    important: {
-        fontSize: 25,
-        color: "blue",
-        fontWeight: "bold",
-    }
+	base: {
+		padding: 20,
+		fontSize: 25
+	},
+	important: {
+		fontSize: 25,
+		color: 'blue',
+		fontWeight: 'bold'
+	}
 });

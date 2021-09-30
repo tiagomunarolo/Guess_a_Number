@@ -6,7 +6,6 @@ import LowerHigherBtn from './LowerHigherComponent';
 import { tryNewNumber } from './RandomGenerator';
 
 export default function GameBox(props) {
-
 	const choosenNumber = props.number;
 	const setNumber = props.setNumber;
 	const setNumRounds = props.setNumRounds;
@@ -15,36 +14,39 @@ export default function GameBox(props) {
 	const [ numberInput, updateNumber ] = useState(0);
 	const [ listOfNumbers, updateListOfNumbers ] = useState([]);
 
-	const lowerHandler = (num) => {
-		if (num < maxNumber && num >= choosenNumber) updateMaxNumber(num);
+	const parameters = {
+		min: minNumber,
+		max: maxNumber,
+		ignore: listOfNumbers,
+		inputType: '',
+		current: numberInput,
+		choosenNumber: choosenNumber,
+		updateNum: updateNumber,
+		setNumber: setNumber,
+		setRounds: setNumRounds
+	};
+
+	const updateListOfNumbersHandler =  (num) => {
 		updateListOfNumbers((currentList) => {
 			let listReturn = [];
 			if (currentList.includes(num)) listReturn = currentList;
 			else listReturn = [ ...currentList, num ];
 			return listReturn;
 		});
-		tryNewNumber(minNumber, maxNumber, listOfNumbers, 'lower', numberInput, choosenNumber, updateNumber, setNumber, setNumRounds);
+	};
+
+	const lowerHandler = (num) => {
+		if (num < maxNumber && num >= choosenNumber) updateMaxNumber(num);
+		updateListOfNumbersHandler(num);
+		parameters.inputType = 'lower';
+		tryNewNumber(parameters);
 	};
 
 	const higherHandler = (num) => {
 		if (num > minNumber && num <= choosenNumber) updateMinNumber(num);
-		updateListOfNumbers((currentList) => {
-			let listReturn = [];
-			if (currentList.includes(num)) listReturn = currentList;
-			else listReturn = [ ...currentList, num ];
-			return listReturn;
-		});
-		tryNewNumber(
-			minNumber,
-			maxNumber,
-			listOfNumbers,
-			'higher',
-			numberInput,
-			choosenNumber,
-			updateNumber,
-			setNumber,
-			setNumRounds
-		);
+		updateListOfNumbersHandler(num);
+		parameters.inputType = 'higher';
+		tryNewNumber(parameters);
 	};
 
 	const showListFunction = (num, index) => {
