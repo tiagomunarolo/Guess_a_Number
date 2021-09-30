@@ -7,13 +7,13 @@ function getRandomIntInclusive(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, updateNumber, setNumber) => {
+export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, updateNumber, setNumber, setRounds) => {
 	const newNumber = getRandomIntInclusive(min, max);
 
 	let liar = false;
 
 	if (ignore && (newNumber == ignore || (Array.isArray(ignore) && ignore.includes(newNumber)))) {
-		return tryNewNumber(min, max, ignore, type, current, choosenNumber, updateNumber, setNumber);
+		return tryNewNumber(min, max, ignore, type, current, choosenNumber, updateNumber, setNumber, setRounds);
 	}
 
 	if ((current > choosenNumber && type === 'higher') || (current < choosenNumber && type === 'lower')) {
@@ -25,6 +25,7 @@ export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, upd
 	if (!liar && newNumber == choosenNumber) {
 		Alert.alert('Game Over', `Number found ${choosenNumber}`);
 		setNumber(constants.GAME_OVER_SCREEN);
+		setRounds(ignore.length);
 		return;
 	}
 
@@ -35,6 +36,6 @@ export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, upd
 		console.log('Updating input to ', newNumber);
 		updateNumber(newNumber);
 	} else {
-		tryNewNumber(min, max, null, type, current, choosenNumber, updateNumber, setNumber);
+		tryNewNumber(min, max, ignore, type, current, choosenNumber, updateNumber, setNumber, setRounds);
 	}
 };

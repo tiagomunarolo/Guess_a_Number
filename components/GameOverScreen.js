@@ -9,12 +9,13 @@ export default (GameOverScreen = (props) => {
 				<Image source={require('../assets/gameover.webp')} style={styles.image} />
 			</View>
 			<View style={styles.textContainer}>
-				<Text>
-					Machine took {props.round} to discover number {props.number}
+				<Text style={styles.base}>
+					Machine took <Text style={styles.important}>{props.rounds}</Text> Rounds to discover number{' '}
+					<Text style={styles.important}>{props.number}</Text> !!
 				</Text>
 			</View>
 			<View style={styles.button}>
-				<Button title="New Game" color="white" onPress={() => props.setNumber(constants.INPUT_SCREEN)} />
+				<Button title="NEW GAME" color="white" onPress={() => props.setNumber(constants.INPUT_SCREEN)} />
 			</View>
 		</View>
 	);
@@ -40,11 +41,24 @@ const styles = StyleSheet.create({
 		resizeMode: 'repeat'
 	},
 	textContainer: {
-		padding: 30
+		padding: 30,
+        textAlign: "center",
 	},
 	button: {
 		borderRadius: 20,
-		borderWidth: 1,
-		backgroundColor: 'pink'
-	}
+		borderWidth: 2,
+        borderColor: "pink",
+		backgroundColor: '#ff66ff',
+        fontWeight: "900",
+        shadowOpacity: 0.2
+	},
+    base: {
+        padding: 20,
+        fontSize: 25,
+    },
+    important: {
+        fontSize: 25,
+        color: "blue",
+        fontWeight: "bold",
+    }
 });

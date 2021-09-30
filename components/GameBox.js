@@ -6,8 +6,10 @@ import LowerHigherBtn from './LowerHigherComponent';
 import { tryNewNumber } from './RandomGenerator';
 
 export default function GameBox(props) {
+
 	const choosenNumber = props.number;
 	const setNumber = props.setNumber;
+	const setNumRounds = props.setNumRounds;
 	const [ minNumber, updateMinNumber ] = useState(1);
 	const [ maxNumber, updateMaxNumber ] = useState(99);
 	const [ numberInput, updateNumber ] = useState(0);
@@ -21,7 +23,7 @@ export default function GameBox(props) {
 			else listReturn = [ ...currentList, num ];
 			return listReturn;
 		});
-		tryNewNumber(minNumber, maxNumber, listOfNumbers, 'lower', numberInput, choosenNumber, updateNumber, setNumber);
+		tryNewNumber(minNumber, maxNumber, listOfNumbers, 'lower', numberInput, choosenNumber, updateNumber, setNumber, setNumRounds);
 	};
 
 	const higherHandler = (num) => {
@@ -40,7 +42,8 @@ export default function GameBox(props) {
 			numberInput,
 			choosenNumber,
 			updateNumber,
-			setNumber
+			setNumber,
+			setNumRounds
 		);
 	};
 
