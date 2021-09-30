@@ -12,10 +12,6 @@ export default function InputBox(props) {
 		else updateNumber('');
 	};
 
-	const unSetNumber = () => {
-		updateNumber('');
-	};
-
 	return (
 		<Card cardBox={styles.cardBox}>
 			<View style={styles.inputBox}>
@@ -28,12 +24,7 @@ export default function InputBox(props) {
 					textAlign="center"
 				/>
 			</View>
-			<StartResetBox
-				setNumber={props.setNumber}
-				adjustNumber={props.adjustNumber}
-				unSetNumber={unSetNumber}
-				number={number}
-			/>
+			<StartResetBox props={{ ...props, unSetNumber: setNumberValue, number: number }} />
 		</Card>
 	);
 }

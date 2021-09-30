@@ -1,4 +1,5 @@
 import { Alert } from 'react-native';
+import constants from '../constants';
 
 function getRandomIntInclusive(min, max) {
 	min = Math.ceil(min);
@@ -11,7 +12,7 @@ export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, upd
 
 	let liar = false;
 
-	if (ignore && newNumber == ignore) {
+	if (ignore && (newNumber == ignore || (Array.isArray(ignore) && ignore.includes(newNumber)))) {
 		return tryNewNumber(min, max, ignore, type, current, choosenNumber, updateNumber, setNumber);
 	}
 
@@ -23,7 +24,7 @@ export const tryNewNumber = (min, max, ignore, type, current, choosenNumber, upd
 
 	if (!liar && newNumber == choosenNumber) {
 		Alert.alert('Game Over', `Number found ${choosenNumber}`);
-		setNumber(false);
+		setNumber(constants.GAME_OVER_SCREEN);
 		return;
 	}
 
