@@ -22,6 +22,7 @@ export default function InputBox(props) {
 					value={number.toString()}
 					maxLength={2}
 					textAlign="center"
+					fontSize={50}
 				/>
 			</View>
 			<StartResetBox props={{ ...props, unSetNumber: setNumberValue, number: number }} />
@@ -31,16 +32,16 @@ export default function InputBox(props) {
 
 const styles = StyleSheet.create({
 	cardBox: {
-		width: 200,
-		height: 150
+		width: 300,
+		height: 300
 	},
 	inputBox: {
 		marginTop: 10,
 		textAlign: 'center',
 		alignSelf: 'center',
 		justifyContent: 'center',
-		width: '30%',
-		height: 50,
+		width: '50%',
+		height: "50%",
 		borderWidth: 1,
 		borderColor: 'blue',
 		borderRadius: 10
